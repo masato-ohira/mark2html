@@ -2,9 +2,15 @@
 
 import { useMarkdown } from '@/hooks/useMarkdown'
 import { tw } from '@/utils/tw'
+import dynamic from 'next/dynamic'
+
+const CodeEditor = dynamic(() => import('@/components/CodeEditor'), {
+  ssr: false,
+})
 
 export default function Home() {
   const { markdown, toMarkdown, html, setHtml, cpMarkdown } = useMarkdown()
+
   return (
     <div
       className={tw(
@@ -29,7 +35,7 @@ export default function Home() {
 
       <div className='space-y-2'>
         <label className={'font-semibold'}>HTMLを入力してください</label>
-        <textarea
+        {/* <textarea
           className={tw(
             //
             'textarea',
@@ -40,7 +46,15 @@ export default function Home() {
           onChange={(e) => {
             setHtml(e.target.value)
           }}
-        ></textarea>
+        ></textarea> */}
+
+        <CodeEditor
+        // mode={'html'}
+        // theme='monokai'
+        // onChange={() => {}}
+        // name='UNIQUE_ID_OF_DIV'
+        // editorProps={{ $blockScrolling: true }}
+        />
       </div>
 
       <div className='flex justify-between'>
