@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { tw } from '@/utils/tw'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,8 +16,21 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang='en'>
+      <body className={inter.className}>
+        <header
+          className={tw(
+            //
+            'bg-slate-900',
+            'text-white',
+            'p-4',
+            'text-center',
+          )}
+        >
+          <h1 className={'text-3xl font-semibold'}>Mark2Html Converter</h1>
+        </header>
+        {children}
+      </body>
     </html>
   )
 }
