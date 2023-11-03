@@ -2,6 +2,7 @@ import { sleep } from '@/utils/sleep'
 import axios from 'axios'
 import { atom, useAtom, useAtomValue } from 'jotai'
 import MarkdownIt from 'markdown-it'
+import { html_beautify } from 'js-beautify'
 
 const mdOptions: MarkdownIt.Options = {
   html: true,
@@ -27,7 +28,11 @@ export const useHtml = () => {
   const toHtml = async () => {
     setLoading(true)
     setHtml('')
-    const res = md.render(markdown)
+    let res = md.render(markdown)
+    res = html_beautify(res, {
+      indent_size: 2,
+    })
+
     await sleep(100)
     setHtml(res)
     setLoading(false)

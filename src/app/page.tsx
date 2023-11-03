@@ -11,25 +11,29 @@ const HtmlEditor = dynamic(() => import('@/components/HtmlEditor'), {
 
 export default function Home() {
   return (
-    <div className={tw('p-8')}>
+    <div className={tw('p-4 md:p-8')}>
       <div
         className={tw(
           //
           'flex',
-          'justify-between',
-          'items-center',
-          'gap-3',
+          'flex-col',
+          'md:flex-row',
+          'md:justify-between',
+          'md:items-center',
+
+          'gap-10',
+          'md:gap-3',
         )}
       >
-        <div className={'w-[48%]'}>
+        <div className={'md:w-[48%]'}>
           <HtmlEditor />
         </div>
 
-        <div className='w-[4%]'>
+        <div className='md:w-[4%]'>
           <Converter />
         </div>
 
-        <div className={'w-[48%]'}>
+        <div className={'md:w-[48%]'}>
           <MarkdownEditor />
         </div>
       </div>
